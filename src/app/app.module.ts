@@ -3,6 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './components/home/home.component';
 
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
@@ -10,7 +13,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
       config: {
         url: 'http://localhost:8080',
         realm: 'securityKeyCloak',
-        clientId: 'securityKeyCloak-breif'
+        clientId: 'keycloak_breif_angular'
       },
       initOptions: {
         onLoad: 'check-sso',
@@ -21,11 +24,13 @@ function initializeKeycloak(keycloak: KeycloakService) {
 }
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HomeComponent],
   imports: [
     AppRoutingModule,
     BrowserModule, 
-    KeycloakAngularModule
+    KeycloakAngularModule,
+    RouterModule,
+    HttpClientModule
   ],
   providers: [
     {
