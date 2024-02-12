@@ -12,7 +12,7 @@ export class UserComponent implements OnInit {
   constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
-    this.http.get<User>(`http://localhost:8081/users`).subscribe({
+    this.http.get<User>(`http://localhost:8082/users`).subscribe({
       next: data =>  this.user = data,
       error: err=> console.log(err)
     })
