@@ -9,8 +9,8 @@ function initializeKeycloak(keycloak: KeycloakService) {
     keycloak.init({
       config: {
         url: 'http://localhost:8080',
-        realm: 'your-realm',
-        clientId: 'your-client-id'
+        realm: 'securityKeyCloak',
+        clientId: 'securityKeyCloak-breif'
       },
       initOptions: {
         onLoad: 'check-sso',
