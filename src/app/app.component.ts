@@ -17,10 +17,11 @@ export class AppComponent implements OnInit{
           this.profile=profile;
         });
       }
-      console.log(this.profile?.email);
   }
 logout() {
-  this.keycloakService.logout(window.location.origin);
+  this.keycloakService.logout(window.location.origin).then(()=>{
+    console.log("logout with success");
+  }).catch((error)=> console.error("error logout", error));
 }
 async login() {
   this.keycloakService.login({

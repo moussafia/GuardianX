@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
+import { UserComponent } from './components/user/user.component';
+import { CommonModule } from '@angular/common';
 
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
@@ -24,10 +26,11 @@ function initializeKeycloak(keycloak: KeycloakService) {
 }
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [AppComponent, HomeComponent, UserComponent],
   imports: [
     AppRoutingModule,
     BrowserModule, 
+    CommonModule,
     KeycloakAngularModule,
     RouterModule,
     HttpClientModule

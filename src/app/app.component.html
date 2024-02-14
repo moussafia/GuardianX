@@ -6,22 +6,33 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/public">Public</a>
+      <li class="nav-item active"
+      *ngIf="keycloakService.getUserRoles().includes('USER')">
+        <a class="nav-link" routerLink="/public"
+        >Public</a>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item active"
+      *ngIf="keycloakService.getUserRoles().includes('ADMIN')">
         <a class="nav-link" routerLink="/users">Users</a>
       </li>
   
     </ul>
     <ul class="navbar-nav mr-6">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown
-          </a>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" 
+            role="button" data-toggle="dropdown"
+             aria-haspopup="true" 
+             aria-expanded="false">
+             <span *ngIf="profile;else notlogIn">
+              {{profile.username}}
+             </span>
+              <ng-template #notlogIn>
+                DropDown
+              </ng-template>
+            </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" (click)="login()">Login</a>
-            <a class="dropdown-item" (click)="logout()">Logout</a>
+            <a class="dropdown-item" (click)="login()" *ngIf="!keycloakService.isLoggedIn()">Login</a>
+            <a class="dropdown-item" (click)="logout()" *ngIf="keycloakService.isLoggedIn()">Logout</a>
           </div>
         </li>
     </ul>

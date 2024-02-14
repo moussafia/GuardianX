@@ -12,8 +12,8 @@ import { AuthGuard } from './guard/auth.guard';
   imports: [
     CommonModule,
     RouterModule.forRoot([
-        { path: "users", component: UserComponent, canActivate: [AuthGuard] , data:{roles: ['USER']} },
-        { path: "public", component: PublicComponent },
+        { path: "users", component: UserComponent, canActivate: [AuthGuard] , data:{roles: ['ADMIN']} },
+        { path: "public", component: PublicComponent, canActivate: [AuthGuard], data:{roles: ['USER']} },
         {path: "", component: HomeComponent},
         {path: "**", redirectTo:"", pathMatch: "full"},
       ])
