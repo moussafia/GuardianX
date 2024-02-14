@@ -1,3 +1,7 @@
+# important!!!
+
+this project depends on https://github.com/moussafia/S3CUR1TY/tree/main/spring_security_keycloak_RS
+
 # TaskflowgardX
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.0.
